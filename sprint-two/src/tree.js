@@ -11,6 +11,7 @@ var Tree = function(value) {
 
 var treeMethods = {};
 
+//Time Complexity: O(1)
 treeMethods.addChild = function(value) {
   //create an instance for child
   var newChild = new Tree(value);
@@ -18,6 +19,7 @@ treeMethods.addChild = function(value) {
   this.children.push(newChild);
 };
 
+//Time Complexity: O(n)
 treeMethods.contains = function(target) {
   //check for base case (current tree's value) -> if equal to target return true
    if (this.value === target) {
@@ -32,10 +34,12 @@ treeMethods.contains = function(target) {
    return false;
 };
 
-//try to iterate through when this.children is an object
 
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+//add parent property which refers to the parent node or null when no node
+//removeFromParent() method which removes the parent from the child and child from parent

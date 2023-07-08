@@ -37,4 +37,21 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should return the smallest closest value to a target value in the binary search tree', function() {
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(4);
+    expect(closestValue(binarySearchTree, 10)).to.eql(6);
+  });
+
+  // Adding the test for closestValue
+  it('should return the smallest closest value to a target value in the binary search tree', function() {
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(4);
+    expect(closestValue(binarySearchTree, 5.5)).to.eql(5);
+  });
 });

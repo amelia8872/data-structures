@@ -4,6 +4,7 @@ var HashTable = function() {
   this._storage = LimitedArray(this._limit);
 };
 
+//Time Complexity: O(1) when exists collision, it should O(n)
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
 
@@ -19,11 +20,13 @@ HashTable.prototype.insert = function(k, v) {
 
     }
   }
+
   this._storage[index].push([k,v]);
 
 
 };
 
+//Time Complexity: O(1) when exists collision, it should O(n)
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
 
@@ -42,6 +45,7 @@ HashTable.prototype.retrieve = function(k) {
 
 };
 
+//Time Complexity: O(1) when exists collision, it should O(n)
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   if (this._storage[index]) {

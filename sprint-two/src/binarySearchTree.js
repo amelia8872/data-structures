@@ -16,6 +16,7 @@ var BinarySearchTree = function(value) {
 
 var binaryMethods = {};
 
+//Time Complexity: O(logn)
 binaryMethods.insert = function (val) {
   // base case
   if (val === this.value) {
@@ -36,6 +37,7 @@ binaryMethods.insert = function (val) {
 
 }
 
+//Time Complexity: O(logn)
 binaryMethods.contains = function (val) {
   // base case
   if (this.value === val) {
@@ -49,6 +51,7 @@ binaryMethods.contains = function (val) {
   }
 }
 
+//Time Complexity: O(1)
 binaryMethods.depthFirstLog = function (cb) {
   cb(this.value);
 
@@ -68,3 +71,28 @@ binaryMethods.depthFirstLog = function (cb) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+// Use case:
+
+var closestValue = function (BST, target) {
+  if (BST === null) {
+    return null;
+  }
+
+  var closest = BST.value;
+  if (target < BST.value && BST.left !== null) {
+    closest = closestValue(BST.left, target);
+  } else if (target > BST.value && BST.right !== null) {
+    closest = closestValue(BST.right, target);
+  }
+
+  if (Math.abs(BST.value - target) < Math.abs(closest - target)) {
+    return BST.value;
+   } else if (Math.abs(BST.value - target) === Math.abs(closest - target)) {
+    return Math.min(BST.value, closest);
+   } else {
+    return closest;
+   }
+}
+
+//rebalance when max depth > 2* min depth
